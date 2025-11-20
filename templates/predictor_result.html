@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .container { max-width: 600px; margin: 0 auto; text-align: center; }
+        .success { color: green; font-size: 20px; }
+        .warning { color: orange; font-size: 20px; }
+        .error { color: red; font-size: 20px; }
+        .back-btn { background: #6c757d; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; display: inline-block; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Prediction Result</h1>
+
+        {% if 'LOW RISK' in prediction %}
+            <div class="success">{{ prediction }}</div>
+        {% elif 'HIGH RISK' in prediction %}
+            <div class="warning">{{ prediction }}</div>
+        {% else %}
+            <div class="error">{{ prediction }}</div>
+        {% endif %}
+
+        {% if confidence %}
+            <p><strong>Confidence:</strong> {{ confidence }}</p>
+        {% endif %}
+
+        <a href="/" class="back-btn">← Make Another Prediction</a>
+    </div>
+</body>
+</html>
